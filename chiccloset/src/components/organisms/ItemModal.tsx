@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Dialog, DialogContent } from '@mui/material';
 import type { Product } from '../../types';
+import ItemModalImage from '../atoms/ItemModalImage';
 import ItemModalFormFields from '../molecules/ItemModalFormFields';
 
 interface ItemModalProps {
@@ -29,7 +30,8 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
         paper: {
           sx: {
             width: '80%',
-            maxWidth: '800px'
+            maxWidth: '800px',
+            height: '100%',
           },
         },
       }}
@@ -37,13 +39,13 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
       <DialogContent
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: { xs: 'column', md: 'row' },
           gap: 6,
           padding: 8,
           height: '100%',
         }}
       >
-
+        <ItemModalImage editableProduct={editableProduct} />
         <ItemModalFormFields editableProduct={editableProduct} />
       </DialogContent>
     </Dialog>

@@ -14,6 +14,13 @@ const string = {
   itemlist: {
     error: 'Error loading products',
   },
+  itemmodal: {
+    fields: {
+      title: 'Title',
+      price: 'Price',
+      description: 'Description',
+    }
+  },
   footer: {
     credit: 'Powered by Fake Store API',
     copyright:'© 2025 Grace Chan. All rights reserved.'

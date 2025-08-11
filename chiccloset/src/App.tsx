@@ -1,8 +1,11 @@
 import './App.css';
+import Header from './components/molecules/Header';
 
 function App() {
   return (
-    <main></main>
+    <main>
+      <Header />
+    </main>
   )
 }
 

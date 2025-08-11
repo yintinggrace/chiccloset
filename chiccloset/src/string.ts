@@ -20,7 +20,10 @@ const string = {
       price: 'Price',
       description: 'Description',
       category: 'Category'
-    }
+    },
+    cancelButton: 'Cancel',
+    saveButton: 'Save',
+    deleteButton: 'Delete',
   },
   footer: {
     credit: 'Powered by Fake Store API',

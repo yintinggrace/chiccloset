@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Dialog, DialogContent } from '@mui/material';
+import { Dialog, DialogContent, DialogActions } from '@mui/material';
 import type { Product } from '../../types';
 import ItemModalImage from '../atoms/ItemModalImage';
 import ItemModalFormFields from '../molecules/ItemModalFormFields';
+import ItemModalButton from '../molecules/ItemModalButton';
 
 interface ItemModalProps {
   product: Product | null;
@@ -48,6 +49,10 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
         <ItemModalImage editableProduct={editableProduct} />
         <ItemModalFormFields editableProduct={editableProduct} />
       </DialogContent>
+
+      <DialogActions sx={{ padding: 2, justifyContent: 'space-between' }}>
+        <ItemModalButton onClose={onClose} />
+      </DialogActions>
     </Dialog>
   );
 };

@@ -11,6 +11,9 @@ const string = {
   navbar: {
     error: 'Error loading categories',
   },
+  itemlist: {
+    error: 'Error loading products',
+  },
   footer: {
     credit: 'Powered by Fake Store API',
     copyright:'© 2025 Grace Chan. All rights reserved.'

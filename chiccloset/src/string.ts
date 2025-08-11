@@ -19,6 +19,7 @@ const string = {
       title: 'Title',
       price: 'Price',
       description: 'Description',
+      category: 'Category'
     }
   },
   footer: {

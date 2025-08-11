@@ -1,6 +1,7 @@
 import {Box, TextField } from '@mui/material';
 import string from '../../string';
 import type { Product } from '../../types';
+import ItemModalCategoryPin from './ItemModalCategoryPin';
 
 interface ItemModalFormFieldsProps {
   editableProduct: Product;
@@ -27,6 +28,7 @@ const ItemModalFormFields: React.FC<ItemModalFormFieldsProps> = ({ editableProdu
         rows={4}
         fullWidth
       />
+      <ItemModalCategoryPin category={editableProduct.category} />
     </Box>
   )
 }

@@ -8,6 +8,9 @@ const string = {
     title: 'Welcome to Chic Closet',
     subtitle: 'Discover your new favourite look'
   },
+  navbar: {
+    error: 'Error loading categories',
+  },
   footer: {
     credit: 'Powered by Fake Store API',
     copyright:'© 2025 Grace Chan. All rights reserved.'

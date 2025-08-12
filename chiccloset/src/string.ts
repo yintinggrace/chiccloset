@@ -1,10 +1,10 @@
 const string = {
   header: {
-    logo: '/logo.png',
+    logo: 'logo.png',
     altText: 'Chic Closet Logo'
   },
   hero: {
-    img: '/hero.jpg',
+    img: 'hero.jpg',
     adminGreeting: 'Hello, Admin!',
     title: 'Update your closet for the new season'
   },

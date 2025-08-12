@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import Header from './components/molecules/Header';
+import Header from './components/atoms/Header';
 import Hero from './components/molecules/Hero';
 import Navbar from './components/molecules/Navbar';
 import ItemList from './components/organisms/ItemList';

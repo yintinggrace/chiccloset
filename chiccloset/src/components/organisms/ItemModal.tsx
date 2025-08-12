@@ -6,6 +6,7 @@ import ItemModalFormFields from '../molecules/ItemModalFormFields';
 import ItemModalButton from '../molecules/ItemModalButton';
 import { useUpdateProduct } from '../../hooks/updateProduct';
 import { useDeleteProduct } from '../../hooks/deleteProduct';
+import { useCreateProduct } from '../../hooks/createProduct';
 
 interface ItemModalProps {
   product: Product | null;
@@ -18,7 +19,8 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
   const [hasTriedSaving, setHasTriedSaving] = useState(false);
   const { mutate: updateProduct, isPending } = useUpdateProduct();
   const { mutate: deleteProduct } = useDeleteProduct();
-
+  const { mutate: createProduct } = useCreateProduct();
+  const isNew = product?.id === 0 && product.title === '';
 
 const isFormInvalid =
   !editableProduct ||
@@ -47,17 +49,29 @@ const isFormInvalid =
     setHasTriedSaving(true);
 
     if (editableProduct && !isFormInvalid) {
-      updateProduct(editableProduct, {
-        onSuccess: () => {
-          setHasTriedSaving(false);
-          onClose();
-        },
-        onError: (error) => {
-          console.error('Update failed:', error);
-        },
-      });
+      if (isNew) {
+        createProduct(editableProduct, {
+          onSuccess: () => {
+            setHasTriedSaving(false);
+            onClose();
+          },
+          onError: (error) => {
+            console.error('Create failed:', error);
+          }
+        });
+      } else {
+        updateProduct(editableProduct, {
+          onSuccess: () => {
+            setHasTriedSaving(false);
+            onClose();
+          },
+          onError: (error) => {
+            console.error('Update failed:', error);
+          },
+        });
+      }
     }
-  }
+  };
 
   const handleDelete = () => {
     if (editableProduct) {
@@ -98,6 +112,7 @@ const isFormInvalid =
       >
         <ItemModalImage
           editableProduct={editableProduct}
+          isNew={isNew}
           onImageChange={(dataUrl) => handleChange('image', dataUrl)}
         />
 
@@ -113,6 +128,7 @@ const isFormInvalid =
           handleSave={handleSave}
           handleDelete={handleDelete}
           hasTriedSaving={hasTriedSaving}
+          isNew={isNew}
           isFormInvalid={isFormInvalid}
           isPending={isPending}
         />

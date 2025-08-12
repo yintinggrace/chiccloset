@@ -24,6 +24,8 @@ const string = {
     cancelButton: 'Cancel',
     saveButton: 'Save',
     deleteButton: 'Delete',
+    editButton: 'Edit Image',
+    addButton: 'Add Image'
   },
   itemmodalbutton: {
     isPending: 'Saving...',

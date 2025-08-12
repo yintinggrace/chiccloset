@@ -21,4 +21,9 @@ const deleteProduct = async (product: Product) => {
   return { id: product.id };
 };
 
-export { fetchCategories, fetchProducts, updateProduct, deleteProduct };
+const createProduct = async (product: Product) => {
+  const response = await axios.post(`https://fakestoreapi.com/products`, product);
+  return response.data;
+};
+
+export { fetchCategories, fetchProducts, updateProduct, deleteProduct, createProduct };

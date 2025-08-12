@@ -8,9 +8,10 @@ interface ItemModalButtonProps {
   hasTriedSaving: boolean;
   isPending: boolean;
   isFormInvalid: boolean;
+  isNew: boolean;
 }
 
-const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, handleDelete, hasTriedSaving, isPending, isFormInvalid }) => {
+const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, handleDelete, hasTriedSaving, isPending, isFormInvalid, isNew }) => {
   return (
     <Box sx={{ padding: 2, display: 'flex', justifyContent: 'space-between', width: '100%' }}>
       <Button onClick={onClose} variant="contained" color="primary">
@@ -36,13 +37,15 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
           }
         </Button>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleDelete}
-        >
-          {string.itemmodal.deleteButton}
-        </Button>
+        {isNew ? null :
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleDelete}
+          >
+            {string.itemmodal.deleteButton}
+          </Button>
+        }
       </Box>
     </Box>
   )

@@ -1,13 +1,15 @@
 import { Box, Button } from '@mui/material';
 import type { Product } from '../../types';
 import React, { useRef } from 'react';
+import string from '../../string';
 
 interface ItemModalImageProps {
   editableProduct: Product;
   onImageChange: (dataUrl: string) => void;
+  isNew: boolean;
 }
 
-const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImageChange }) => {
+const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImageChange, isNew }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,28 +37,45 @@ const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImag
         justifyContent: 'center',
       }}
     >
-      <img
-        src={editableProduct.image}
-        alt={editableProduct.title}
-        style={{
-          maxWidth: '100%',
-          maxHeight: '100%',
-          objectFit: 'contain',
-        }}
-      />
-
-      <Box mt={2}>
-        <input
-          accept="image/*"
-          type="file"
-          onChange={handleFileChange}
-          ref={fileInputRef}
-          style={{ display: 'none' }}
+      {editableProduct.image ? (
+        <img
+          src={editableProduct.image}
+          alt={editableProduct.title}
+          style={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain',
+          }}
         />
-        <Button variant="text" onClick={handleButtonClick}>
-          Edit
-        </Button>
-      </Box>
+      ) : null }
+
+      {isNew ? (
+        <Box mt={2}>
+          <input
+            accept="image/*"
+            type="file"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+          />
+          <Button variant="text" onClick={handleButtonClick}>
+            {string.itemmodal.addButton }
+          </Button>
+        </Box>
+       ) : (
+        <Box mt={2}>
+          <input
+            accept="image/*"
+            type="file"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+          />
+          <Button variant="text" onClick={handleButtonClick}>
+            {string.itemmodal.editButton }
+          </Button>
+        </Box>
+      )}
     </Box>
   );
 };

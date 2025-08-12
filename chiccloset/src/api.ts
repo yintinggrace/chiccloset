@@ -16,4 +16,9 @@ const updateProduct = async (product: Product) => {
   return response.data;
 };
 
-export { fetchCategories, fetchProducts, updateProduct };
+const deleteProduct = async (product: Product) => {
+  await axios.delete(`https://fakestoreapi.com/products/${product.id}`);
+  return { id: product.id };
+};
+
+export { fetchCategories, fetchProducts, updateProduct, deleteProduct };

@@ -5,6 +5,7 @@ import ItemModalImage from '../atoms/ItemModalImage';
 import ItemModalFormFields from '../molecules/ItemModalFormFields';
 import ItemModalButton from '../molecules/ItemModalButton';
 import { useUpdateProduct } from '../../hooks/updateProduct';
+import { useDeleteProduct } from '../../hooks/deleteProduct';
 
 interface ItemModalProps {
   product: Product | null;
@@ -16,6 +17,8 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
   const [editableProduct, setEditableProduct] = useState<Product | null>(null);
   const [hasTriedSaving, setHasTriedSaving] = useState(false);
   const { mutate: updateProduct, isPending } = useUpdateProduct();
+  const { mutate: deleteProduct } = useDeleteProduct();
+
 
 const isFormInvalid =
   !editableProduct ||
@@ -51,6 +54,19 @@ const isFormInvalid =
         },
         onError: (error) => {
           console.error('Update failed:', error);
+        },
+      });
+    }
+  }
+
+  const handleDelete = () => {
+    if (editableProduct) {
+      deleteProduct(editableProduct, {
+        onSuccess: () => {
+          onClose();
+        },
+        onError: (error) => {
+          console.error('Delete failed:', error);
         },
       });
     }
@@ -95,6 +111,7 @@ const isFormInvalid =
         <ItemModalButton
           onClose={onClose}
           handleSave={handleSave}
+          handleDelete={handleDelete}
           hasTriedSaving={hasTriedSaving}
           isFormInvalid={isFormInvalid}
           isPending={isPending}

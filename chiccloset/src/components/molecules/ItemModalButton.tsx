@@ -4,12 +4,13 @@ import string from '../../string';
 interface ItemModalButtonProps {
   onClose: () => void;
   handleSave: () => void;
+  handleDelete: () => void;
   hasTriedSaving: boolean;
   isPending: boolean;
   isFormInvalid: boolean;
 }
 
-const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, hasTriedSaving, isPending, isFormInvalid }) => {
+const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, handleDelete, hasTriedSaving, isPending, isFormInvalid }) => {
   return (
     <Box sx={{ padding: 2, display: 'flex', justifyContent: 'space-between', width: '100%' }}>
       <Button onClick={onClose} variant="contained" color="primary">
@@ -38,6 +39,7 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
         <Button
           variant="contained"
           color="primary"
+          onClick={handleDelete}
         >
           {string.itemmodal.deleteButton}
         </Button>

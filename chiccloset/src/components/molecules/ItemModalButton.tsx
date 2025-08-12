@@ -15,7 +15,7 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
   return (
     <Box sx={{ padding: 2, display: 'flex', justifyContent: 'space-between', width: '100%' }}>
       <Button onClick={onClose} variant="contained" color="primary">
-        {string.itemmodal.cancelButton}
+        {string.itemmodal.buttons.cancelButton}
       </Button>
 
       {hasTriedSaving && isFormInvalid && (
@@ -33,7 +33,7 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
         >
           {isPending
             ? string.itemmodalbutton.isPending
-            : string.itemmodal.saveButton
+            : string.itemmodal.buttons.saveButton
           }
         </Button>
 
@@ -43,7 +43,7 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
             color="primary"
             onClick={handleDelete}
           >
-            {string.itemmodal.deleteButton}
+            {string.itemmodal.buttons.deleteButton}
           </Button>
         }
       </Box>

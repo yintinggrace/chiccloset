@@ -21,11 +21,13 @@ const string = {
       description: 'Description',
       category: 'Category'
     },
-    cancelButton: 'Cancel',
-    saveButton: 'Save',
-    deleteButton: 'Delete',
-    editButton: 'Edit Image',
-    addButton: 'Add Image'
+    buttons: {
+      cancelButton: 'Cancel',
+      saveButton: 'Save',
+      deleteButton: 'Delete',
+      editButton: 'Edit Image',
+      addButton: 'Add Image'
+    }
   },
   itemmodalbutton: {
     isPending: 'Saving...',

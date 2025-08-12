@@ -59,7 +59,7 @@ const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImag
             style={{ display: 'none' }}
           />
           <Button variant="text" onClick={handleButtonClick}>
-            {string.itemmodal.addButton }
+            {string.itemmodal.buttons.addButton }
           </Button>
         </Box>
        ) : (
@@ -72,7 +72,7 @@ const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImag
             style={{ display: 'none' }}
           />
           <Button variant="text" onClick={handleButtonClick}>
-            {string.itemmodal.editButton }
+            {string.itemmodal.buttons.editButton }
           </Button>
         </Box>
       )}

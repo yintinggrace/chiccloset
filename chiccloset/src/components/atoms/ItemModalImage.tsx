@@ -12,9 +12,14 @@ interface ItemModalImageProps {
 const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImageChange, isNew }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const maxFileSize  = 1 * 1024 * 1024;
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      if (file.size > maxFileSize) {
+        alert(string.itemmodal.alert);
+        return;
+      }
       const reader = new FileReader();
       reader.onloadend = () => {
         onImageChange(reader.result as string);

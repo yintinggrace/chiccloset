@@ -32,6 +32,7 @@ const string = {
       allFieldsRequired: 'Please fill in all fields before saving.'
     },
     isPending: 'Saving...',
+    alert: 'The file size must not exceed 1 MB.'
   },
   footer: {
     credit: 'Powered by Fake Store API',

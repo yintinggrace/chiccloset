@@ -20,7 +20,7 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
 
       {hasTriedSaving && isFormInvalid && (
         <Typography variant="body2" color="error">
-          Please fill in all fields before saving.
+          {string.itemmodal.validation.allFieldsRequired}
         </Typography>
       )}
 
@@ -32,7 +32,7 @@ const ItemModalButton: React.FC<ItemModalButtonProps> = ({ onClose, handleSave, 
           disabled={isPending}
         >
           {isPending
-            ? string.itemmodalbutton.isPending
+            ? string.itemmodal.isPending
             : string.itemmodal.buttons.saveButton
           }
         </Button>

@@ -27,9 +27,10 @@ const string = {
       deleteButton: 'Delete',
       editButton: 'Edit Image',
       addButton: 'Add Image'
-    }
-  },
-  itemmodalbutton: {
+    },
+    validation: {
+      allFieldsRequired: 'Please fill in all fields before saving.'
+    },
     isPending: 'Saving...',
   },
   footer: {

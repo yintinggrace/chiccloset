@@ -2,6 +2,7 @@ import { Box, Button } from '@mui/material';
 import type { Product } from '../../types';
 import React, { useRef } from 'react';
 import string from '../../string';
+import '../../App.css';
 
 interface ItemModalImageProps {
   editableProduct: Product;
@@ -46,11 +47,7 @@ const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImag
         <img
           src={editableProduct.image}
           alt={editableProduct.title}
-          style={{
-            maxWidth: '100%',
-            maxHeight: '100%',
-            objectFit: 'contain',
-          }}
+          className="item-modal-image"
         />
       ) : null }
 
@@ -61,7 +58,7 @@ const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImag
             type="file"
             onChange={handleFileChange}
             ref={fileInputRef}
-            style={{ display: 'none' }}
+            className="hidden-input"
           />
           <Button variant="text" onClick={handleButtonClick}>
             {string.itemmodal.buttons.addButton }
@@ -74,7 +71,7 @@ const ItemModalImage: React.FC<ItemModalImageProps> = ({ editableProduct, onImag
             type="file"
             onChange={handleFileChange}
             ref={fileInputRef}
-            style={{ display: 'none' }}
+            className="hidden-input"
           />
           <Button variant="text" onClick={handleButtonClick}>
             {string.itemmodal.buttons.editButton }

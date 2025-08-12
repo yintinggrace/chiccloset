@@ -14,17 +14,11 @@ const Footer = () => {
         alignItems: 'center',
         gap: 3,
       }}>
-        <Typography
-          variant="body2"
-          sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
-        >
+        <Typography variant="body2">
           {string.footer.credit}
         </Typography>
 
-        <Typography
-          variant="body2"
-          sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
-        >
+        <Typography variant="body2">
           {string.footer.copyright}
         </Typography>
     </Box>

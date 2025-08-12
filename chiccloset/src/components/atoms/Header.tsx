@@ -1,5 +1,7 @@
 import { Box } from '@mui/material';
 import string from '../../string';
+import colors from '../../color';
+import '../../App.css';
 
 const Header = () => {
   return (
@@ -9,7 +11,7 @@ const Header = () => {
         top: 0,
         left: 0,
         width: '100%',
-        bgcolor: 'background.paper',
+        bgcolor: colors.white,
         zIndex: 1,
         textAlign: 'center',
         py: 2,
@@ -19,7 +21,8 @@ const Header = () => {
       <img
         src={string.header.logo}
         alt={string.header.altText}
-        style={{ maxWidth: '200px', width: '100%', height: 'auto' }}
+        className='header-logo'
+
       />
     </Box>
   );

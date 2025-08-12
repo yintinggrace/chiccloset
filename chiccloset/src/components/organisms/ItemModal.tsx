@@ -96,7 +96,7 @@ const isFormInvalid =
           sx: {
             width: '80%',
             maxWidth: '800px',
-            height: '100%',
+            height: { xs: '90vh', md: '80vh' },
           },
         },
       }}
@@ -105,8 +105,9 @@ const isFormInvalid =
         sx={{
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
+          alignItems: 'center',
           gap: 6,
-          padding: 8,
+          padding: { xs: 4, md: 6 },
           height: '100%',
         }}
       >

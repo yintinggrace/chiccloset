@@ -1,5 +1,6 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import type { Product } from '../../types';
+import '../../App.css';
 
 interface ItemCardProps {
   product: Product,
@@ -27,12 +28,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ product, setSelectedProduct }) => {
       <img
         src={product.image}
         alt={product.title}
-        style={{
-          width: '200px',
-          height: '200px',
-          objectFit: 'contain',
-          paddingBottom: '20px',
-        }}
+        className='item-card-image'
       />
       <CardContent sx={{ textAlign: 'center', p: 0 }}>
         <Typography variant="h6" component="h4">

@@ -1,3 +1,26 @@
 body {
   margin: 0;
 }
+
+.header-logo {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+}
+
+.item-modal-image {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.item-card-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  padding-bottom: 20px;
+}

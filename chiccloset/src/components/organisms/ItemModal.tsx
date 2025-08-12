@@ -4,6 +4,7 @@ import type { Product } from '../../types';
 import ItemModalImage from '../atoms/ItemModalImage';
 import ItemModalFormFields from '../molecules/ItemModalFormFields';
 import ItemModalButton from '../molecules/ItemModalButton';
+import { useUpdateProduct } from '../../hooks/updateProduct';
 
 interface ItemModalProps {
   product: Product | null;
@@ -13,6 +14,17 @@ interface ItemModalProps {
 
 const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
   const [editableProduct, setEditableProduct] = useState<Product | null>(null);
+  const [hasTriedSaving, setHasTriedSaving] = useState(false);
+  const { mutate: updateProduct, isPending } = useUpdateProduct();
+
+const isFormInvalid =
+  !editableProduct ||
+  editableProduct.image === '' ||
+  editableProduct.title === '' ||
+  Number(editableProduct.price) <= 0 ||
+  isNaN(Number(editableProduct.price)) ||
+  editableProduct.description === '' ||
+  editableProduct.category === 'default';
 
   useEffect(() => {
     if (product) {
@@ -21,6 +33,28 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
   }, [product]);
 
   if (!product || !editableProduct) return null;
+
+  const handleChange = (field: keyof Product, value: string | number) => {
+    setEditableProduct((prev) =>
+      prev ? { ...prev, [field]: value } : prev
+    );
+  };
+
+  const handleSave = () => {
+    setHasTriedSaving(true);
+
+    if (editableProduct && !isFormInvalid) {
+      updateProduct(editableProduct, {
+        onSuccess: () => {
+          setHasTriedSaving(false);
+          onClose();
+        },
+        onError: (error) => {
+          console.error('Update failed:', error);
+        },
+      });
+    }
+  }
 
   return (
     <Dialog
@@ -46,12 +80,25 @@ const ItemModal: React.FC<ItemModalProps> = ({ product, open, onClose }) => {
           height: '100%',
         }}
       >
-        <ItemModalImage editableProduct={editableProduct} />
-        <ItemModalFormFields editableProduct={editableProduct} />
+        <ItemModalImage
+          editableProduct={editableProduct}
+          onImageChange={(dataUrl) => handleChange('image', dataUrl)}
+        />
+
+        <ItemModalFormFields
+          editableProduct={editableProduct}
+          handleChange={handleChange}
+        />
       </DialogContent>
 
       <DialogActions sx={{ padding: 2, justifyContent: 'space-between' }}>
-        <ItemModalButton onClose={onClose} />
+        <ItemModalButton
+          onClose={onClose}
+          handleSave={handleSave}
+          hasTriedSaving={hasTriedSaving}
+          isFormInvalid={isFormInvalid}
+          isPending={isPending}
+        />
       </DialogActions>
     </Dialog>
   );

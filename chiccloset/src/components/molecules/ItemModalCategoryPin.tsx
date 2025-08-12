@@ -4,9 +4,10 @@ import string from '../../string';
 
 interface ItemModalCategoryPinProps {
   category: string;
+  onChange: (newCategory: string) => void;
 }
 
-const ItemModalCategoryPin: React.FC<ItemModalCategoryPinProps> = ({ category }) => {
+const ItemModalCategoryPin: React.FC<ItemModalCategoryPinProps> = ({ category, onChange }) => {
   const { data: categories, isLoading, error } = useCategories();
 
   if (isLoading) return <CircularProgress />;
@@ -33,6 +34,7 @@ const ItemModalCategoryPin: React.FC<ItemModalCategoryPinProps> = ({ category })
             key={cat}
             label={cat}
             clickable
+            onClick={() => onChange(cat)}
             color={category === cat ? 'primary' : 'default'}
             variant={category === cat ? 'filled' : 'outlined'}
           />

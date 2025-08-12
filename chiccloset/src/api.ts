@@ -11,4 +11,9 @@ const fetchProducts = async (): Promise<Product[]> => {
   return response.data;
 };
 
-export { fetchCategories, fetchProducts };
+const updateProduct = async (product: Product) => {
+  const response = await axios.put(`https://fakestoreapi.com/products/${product.id}`, product);
+  return response.data;
+};
+
+export { fetchCategories, fetchProducts, updateProduct };

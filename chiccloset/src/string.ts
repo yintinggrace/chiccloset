@@ -25,6 +25,9 @@ const string = {
     saveButton: 'Save',
     deleteButton: 'Delete',
   },
+  itemmodalbutton: {
+    isPending: 'Saving...',
+  },
   footer: {
     credit: 'Powered by Fake Store API',
     copyright:'© 2025 Grace Chan. All rights reserved.'

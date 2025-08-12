@@ -29,10 +29,10 @@ const Hero = () => {
       }}
     >
       <Typography variant="h2" component="h1" sx={{ zIndex: 1 }}>
-        {string.hero.title}
+        {string.hero.adminGreeting}
       </Typography>
       <Typography variant="h5" sx={{ mt: 2, zIndex: 1 }}>
-        {string.hero.subtitle}
+        {string.hero.title}
       </Typography>
     </Box>
   );

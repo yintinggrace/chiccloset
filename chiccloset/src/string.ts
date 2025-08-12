@@ -5,8 +5,8 @@ const string = {
   },
   hero: {
     img: '/hero.jpg',
-    title: 'Welcome to Chic Closet',
-    subtitle: 'Discover your new favourite look'
+    adminGreeting: 'Hello, Admin!',
+    title: 'Update your closet for the new season'
   },
   navbar: {
     error: 'Error loading categories',
